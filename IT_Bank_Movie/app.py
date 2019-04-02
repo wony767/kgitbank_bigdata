@@ -7,7 +7,7 @@ app=Flask(__name__) #초기화해서 app에 주소값 넣음
 #메인화면
 @app.route('/moviemain')#주소임
 def mainmovie():
-    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1324',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     try:
         with conn.cursor() as cursor:
             sql='''select * from movie '''
@@ -23,7 +23,7 @@ def mainmovie():
 def searchmovie():
     text=request.form.get('text')
     stype=request.form.get('stype')
-    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1324',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     try:
         with conn.cursor() as cursor:
             if stype == 'm_title':
@@ -54,7 +54,7 @@ def searchmovie():
 #영화상세
 @app.route('/movie_detail/<m_no>')#주소임
 def detial(m_no):
-    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1324',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     try:
         with conn.cursor() as cursor:
             sql='''select * from movie where m_no= %s;'''
@@ -83,7 +83,7 @@ def formresult():
     content = request.form.get('content')
     img = request.files['img']
     dirname=os.path.dirname(__file__) + '/static/uploads/'+img.filename
-    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1324',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     
     try:
         with conn.cursor() as cursor:
@@ -99,7 +99,7 @@ def formresult():
 #영화삭제하기
 @app.route('/delete_movie/<m_no>',methods=['GET'])
 def deleteform(m_no):
-    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1324',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
  
     try:
         with conn.cursor() as cursor:
@@ -115,7 +115,7 @@ def deleteform(m_no):
 #영화내용 수정하기
 @app.route('/update_movie/<m_no>',methods=['GET'])
 def updateform(m_no):
-    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1324',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
  
     try:
         with conn.cursor() as cursor:
@@ -130,7 +130,7 @@ def updateform(m_no):
 #영화수정
 @app.route('/update_movie',methods=['POST'])
 def updateformp():
-    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1324',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     no = request.form.get('no') 
     title = request.form.get('title') 
     mdir = request.form.get('mdir') 
