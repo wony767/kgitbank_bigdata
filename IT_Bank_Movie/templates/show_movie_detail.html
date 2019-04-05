@@ -17,7 +17,7 @@
                   <div class="card-body p-0">
                       <div class="row p-5">
                           <div class="col-md-4">
-                              <img src="{{movieInfo['current_movie_img']}}" style="width: 300px;height: 500px">
+                              <img src="{{movieInfo['show_movie_img']}}" style="width: 300px;height: 500px">
                           </div>
                           <div class="col-md-4 text-center">
                               <div class="row">
@@ -32,12 +32,10 @@
                       <div class="row pb-5 p-5" style="margin-left: 25px">
                         <table>
                           <tr>
-                            <th style="width: 150px">등급</th>
                             <th style="width: 100px">개봉일</th>
                           </tr>
                           <tr>
-                            <td>{{movieInfo['current_movie_genre']}}</td>
-                            <td>{{movieInfo['current_movie_open']}}</td>
+                            <td>{{movieInfo['show_movie_open']}}</td>
                           </tr>
 
                         </table>
@@ -47,7 +45,7 @@
                       <div class="row pb-5 p-5">
                           
                               <p class="font-weight-bold mb-4">줄거리</p>
-                              <p>{{movieInfo['current_movie_story']}}</p>
+                              <p>{{movieInfo['show_movie_story']}}</p>
                       </div>
                     </div>
               </div>
