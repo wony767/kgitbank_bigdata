@@ -13,7 +13,8 @@ DB root계정 비밀번호 변경
 use mysql;  
 update user set password=password('1234') where user='root';  
 describe user;  
-  
+flush privileges;  
+
 update user set authentication_string=password('1234') where user='root';  
   
 mysql의 root 비밀번호를 변경할 때 update user set password=password('1234') where user='root';   
