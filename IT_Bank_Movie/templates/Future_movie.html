@@ -16,29 +16,27 @@
             data:{"stype":$("#stype").val(),"text":$('#text').val()},
             url:"/ajaxmain",
             dataType:"json",
-            success:function(movieList){
-              console.log(movieList);
-              maketable(movieList);
+            success:function(to_be_movieList){
+              console.log(to_be_movieList);
+              maketable(to_be_movieList);
             }
           });
         }
-        function maketable(movieList){
+        function maketable(to_be_movieList){
             $("#ajaxcard").html(""),
-            $(movieList).each(function(index,movieList){
+            $(to_be_movieList).each(function(index,movieInfo){
             $("#ajaxcard").append(
             '<div class="card" style="width: 18rem;">'+
-            '<img src='+movieList.current_movie_img+'class="card-img-top" alt="...">'+
+            '<img src='+movieInfo.show_movie_img+'class="card-img-top" alt="...">'+
             '<div class="card-body">'+
-              '<h5 class="card-title">'+movieList.current_movie_title+'</h5>'+
+              '<h5 class="card-title">'+movieInfo.show_movie_title+'</h5>'+
               '<p class="card-text">'+
-                '<span style="color: crimson">등급: '+movieList.current_movie_genre+'</span><br />'+
-                '개봉날짜: '+movieList.current_movie_open+'</p>'+
-              '<a href="/movie_detail/'+movieList.m_no+'" class="btn btn-primary">상세보기</a>'+
+                '개봉날짜: '+movieInfo.show_movie_open+'</p>'+
+              '<a href="/movie_detail/'+show.m_no+'" class="btn btn-primary">상세보기</a>'+
             '</div>'+
         '</div>'
             );
         });
-
         }
       </script>
 
@@ -84,9 +82,8 @@
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                     <select class="form-control search-slt" id="stype" name="stype" >
                                         <option>선택</option>
-                                        <option value="current_moive_title">제목</option>
-                                        <option value="current_movie_genre">등급</option>
-                                        <option value="current_movie_open">상영날짜</option>
+                                        <option value="show_moive_title">제목</option>
+                                        <option value="show_movie_open">상영날짜</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -106,15 +103,15 @@
 <hr />
 
 <div class="row" id="ajaxcard">
-        {% for movieInfo in movieList: %}
+        {% for movieInfo in to_be_movieList: %}
         <div class="card" style="width: 18rem;">
-            <img src="{{movieInfo['current_movie_img']}}" class="card-img-top" alt="...">
+            <img src="{{movieInfo['show_movie_img']}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">{{movieInfo['current_movie_title']}}</h5>
+              <h5 class="card-title">{{movieInfo['show_movie_title']}}</h5>
               <p class="card-text">
-                <span style="color: crimson">등급: {{movieInfo['current_movie_genre']}}</span><br />
-                상영날짜: {{movieInfo['current_movie_open']}}</p>
-              <a href="/movie_detail/{{movieInfo['m_no']}}" class="btn btn-primary">상세보기</a>
+                <!--<span style="color: crimson">등급: {{movieInfo['current_movie_genre']}}</span><br />-->
+                상영날짜: {{movieInfo['show_movie_open']}}</p>
+              <a href="/show_movie_detail/{{movieInfo['m_no']}}" class="btn btn-primary">상세보기</a>
             </div>
         </div>
         {% endfor %}
