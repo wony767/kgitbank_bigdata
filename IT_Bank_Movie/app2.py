@@ -88,6 +88,9 @@ def searchmovie():
 #영화상세
 @app.route('/movie_detail/<m_no>')#주소임
 def detail(m_no):
+
+    
+
     conn=pymysql.connect(host='127.0.0.1',
     user='root',
     password='qwer1234',
@@ -138,7 +141,7 @@ def formTest():
 @app.route('/')
 def formresult():
     
-    driver = wd.Chrome(executable_path='IT_Bank_Movie/data/chromedriver')
+    driver = wd.Chrome(executable_path='./chromedriver')
 
     #영화목록 가지고오기
 
@@ -199,7 +202,7 @@ def formresult():
         for movieStory in movieStorys:
             movieStory_cleand = movieStory.text.strip()
             movieStroy_cleand_final = movieStory_cleand.replace("\n","")
-            movie_story.append(movieStroy_cleand_final)
+            movie_story.append(movieStroy_cleand_final)        
     #영화이미지주소 가공
     for moviesoso in range(len(movie_img)):
         movie_img_Processing.append(movie_img[moviesoso].replace("//img1.daumcdn.net/thumb/C236x340/?fname=","")) 
@@ -226,6 +229,14 @@ def formresult():
     db='movie',
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with conn.cursor() as cursor:
+            sql="delete from current_movie"
+            cursor.execute(sql)
+            conn.commit()
+    finally:
+        pass
 
     for insert in range(len(movie_title)):    
         try:
@@ -298,11 +309,10 @@ def formresult():
             movieStory_cleand = movieStory.text.strip()
             movieStroy_cleand_final = movieStory_cleand.replace("\n","")
             Show_movie_story.append(movieStroy_cleand_final)
+    driver.close()        
     #영화이미지주소 가공
     for moviesoso in range(len(Show_movie_img)):
         Show_movie_img_Processing.append(Show_movie_img[moviesoso].replace("//img1.daumcdn.net/thumb/C236x340/?fname=","")) 
-    #셀레늄을 닫음
-    driver.close()
 
     conn=pymysql.connect(host='127.0.0.1',
     user='root',
@@ -311,6 +321,16 @@ def formresult():
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor)
 
+    #데이터삭제
+    try:
+        with conn.cursor() as cursor:
+            sql="delete from movie_to_be_screened"
+            cursor.execute(sql)
+            conn.commit()
+    finally:
+        pass
+
+    #데이터등록
     for insert in range(len(Show_movie_title)):    
         try:
             with conn.cursor() as cursor:
@@ -321,7 +341,7 @@ def formresult():
             pass
     else:
         conn.close()
-        return redirect('moviemain')
+        return redirect('/moviemain')
     #리스트안에 영화제목이 들어가졌나 확인
     #print(Show_movie_title)
 
