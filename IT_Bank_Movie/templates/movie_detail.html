@@ -26,6 +26,7 @@
                               <hr />
                               <div class="row">
                                   <p>주요 키워드</p>
+                                  <img src="IT_Bank_Movie/static/wordcloud/{{movieInfo['current_movie_title']}}.png" />
                               </div>
                           </div>
                       </div>
@@ -118,5 +119,7 @@ table.on( 'draw', function () {
     alert( 'Table redrawn' );
 } );
 </script>
+{{movieInfo['codem']}}
+{{movieInfo['current_movie_title']}}
   </body>
 </html>
