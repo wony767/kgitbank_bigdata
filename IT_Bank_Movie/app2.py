@@ -301,6 +301,8 @@ def formresult():
     #영화이미지주소 가공
     for moviesoso in range(len(Show_movie_img)):
         Show_movie_img_Processing.append(Show_movie_img[moviesoso].replace("//img1.daumcdn.net/thumb/C236x340/?fname=","")) 
+    #셀레늄을 닫음
+    driver.close()
 
     conn=pymysql.connect(host='127.0.0.1',
     user='root',
@@ -319,7 +321,7 @@ def formresult():
             pass
     else:
         conn.close()
-        return render_template('index.html')
+        return redirect('moviemain')
     #리스트안에 영화제목이 들어가졌나 확인
     #print(Show_movie_title)
 
