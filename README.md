@@ -1,6 +1,6 @@
 # kgitbank_bigdata
 > 1. os : windows 10
-> 2. 아나콘다 (python 3.6)
+> 2. 아나콘다 (python 3.65)
 > 3. git, github
 > 4. edit : vs code
 > 5. 웹 : flask,html,css,jqeury,bootstrap,json,ajax 
