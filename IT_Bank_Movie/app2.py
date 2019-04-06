@@ -138,7 +138,7 @@ def formTest():
 @app.route('/')
 def formresult():
     
-    driver = wd.Chrome(executable_path='./chromedriver')
+    driver = wd.Chrome(executable_path='IT_Bank_Movie/data/chromedriver')
 
     #영화목록 가지고오기
 
