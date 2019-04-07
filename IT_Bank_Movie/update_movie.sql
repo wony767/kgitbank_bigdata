@@ -13,6 +13,34 @@
 DROP DATABASE movie;
 create database movie;
 USE movie;
+
+-- 테이블 movie.movie 구조 내보내기
+DROP TABLE IF EXISTS `movie`;
+CREATE TABLE IF NOT EXISTS `movie` (
+  `m_no` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '기본키',
+  `m_title` varchar(100) NOT NULL COMMENT '제목',
+  `m_dir` varchar(50) DEFAULT NULL COMMENT '감독',
+  `m_act` varchar(50) DEFAULT NULL COMMENT '배우',
+  `m_content` longtext DEFAULT NULL COMMENT '내용',
+  `m_grade` varchar(50) DEFAULT 'all',
+  `m_img` varchar(50) DEFAULT NULL,
+  `m_date` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`m_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- 테이블 movie.board 구조 내보내기
+DROP TABLE IF EXISTS `board`;
+CREATE TABLE IF NOT EXISTS `board` (
+  `b_no` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `b_title` varchar(100) NOT NULL,
+  `b_content` longtext DEFAULT NULL,
+  `m_no` int(11) NOT NULL,
+  `writer` varchar(100) NOT NULL,
+  `b_date` timestamp NULL DEFAULT NULL,
+  `good` int(11) DEFAULT NULL,
+  PRIMARY KEY (`b_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
 --  テーブル movie.current_movie の構造をダンプしています
 CREATE TABLE IF NOT EXISTS `current_movie` (
   `m_no` int(11) NOT NULL AUTO_INCREMENT,
