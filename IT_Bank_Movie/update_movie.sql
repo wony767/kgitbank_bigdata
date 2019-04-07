@@ -14,20 +14,6 @@ DROP DATABASE movie;
 create database movie;
 USE movie;
 
--- 테이블 movie.movie 구조 내보내기
-DROP TABLE IF EXISTS `movie`;
-CREATE TABLE IF NOT EXISTS `movie` (
-  `m_no` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '기본키',
-  `m_title` varchar(100) NOT NULL COMMENT '제목',
-  `m_dir` varchar(50) DEFAULT NULL COMMENT '감독',
-  `m_act` varchar(50) DEFAULT NULL COMMENT '배우',
-  `m_content` longtext DEFAULT NULL COMMENT '내용',
-  `m_grade` varchar(50) DEFAULT 'all',
-  `m_img` varchar(50) DEFAULT NULL,
-  `m_date` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`m_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
 -- 테이블 movie.board 구조 내보내기
 DROP TABLE IF EXISTS `board`;
 CREATE TABLE IF NOT EXISTS `board` (
