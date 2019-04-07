@@ -114,7 +114,7 @@
               <p class="card-text">
                 <span style="color: crimson">등급: {{movieInfo['current_movie_genre']}}</span><br />
                 상영날짜: {{movieInfo['current_movie_open']}}</p>
-              <a href="/movie_detail/{{movieInfo['m_no']}}" class="btn btn-primary">상세보기</a>
+              <a href="/movie_detail/{{movieInfo['m_no']}}/{{movieInfo['current_movie_title']}}" class="btn btn-primary">상세보기</a>
             </div>
         </div>
         {% endfor %}
