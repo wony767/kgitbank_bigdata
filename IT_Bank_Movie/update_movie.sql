@@ -11,6 +11,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+USE `movie`;
 --  テーブル movie.current_movie の構造をダンプしています
 CREATE TABLE IF NOT EXISTS `current_movie` (
   `m_no` int(11) NOT NULL AUTO_INCREMENT,
@@ -35,6 +36,14 @@ CREATE TABLE IF NOT EXISTS `movie_to_be_screened` (
   `show_movie_story` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`m_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=549 DEFAULT CHARSET=utf8;
+
+-- 테이블 movie.test 구조 내보내기
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE IF NOT EXISTS `test` (
+  `title` varchar(200) DEFAULT NULL,
+  `codem` varchar(100) NOT NULL,
+  PRIMARY KEY (`codem`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- テーブル movie.movie_to_be_screened: ~0 rows (約) のデータをダンプしています
 /*!40000 ALTER TABLE `movie_to_be_screened` DISABLE KEYS */;
