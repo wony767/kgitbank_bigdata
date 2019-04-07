@@ -311,24 +311,19 @@ def formresult():
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor)
 
+    #데이터삭제 및 등록
     try:
         with conn.cursor() as cursor:
             sql="delete from current_movie"
             cursor.execute(sql)
             conn.commit()
-    finally:
-        pass
-
-    for insert in range(len(movie_title)):    
-        try:
-            with conn.cursor() as cursor:
+            for insert in range(len(movie_title)):    
                 sql="insert into current_movie(current_movie_title,current_movie_img,current_movie_genre,current_movie_open,current_movie_story) values(%s,%s,%s,%s,%s);"
                 cursor.execute(sql,(movie_title[insert],movie_img_Processing[insert],movie_genre[insert],movie_open[insert],movie_story[insert]))
                 conn.commit()
-        finally:
-            pass
-    else:
+    finally:
         conn.close()
+
     
     #######상영예정 영화목록 가지고오기##############
 
@@ -402,27 +397,19 @@ def formresult():
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor)
 
-    #데이터삭제
+    #데이터삭제 및 등록
     try:
         with conn.cursor() as cursor:
             sql="delete from movie_to_be_screened"
             cursor.execute(sql)
-            conn.commit()
-    finally:
-        pass
-
-    #데이터등록
-    for insert in range(len(Show_movie_title)):    
-        try:
-            with conn.cursor() as cursor:
+            conn.commit()    
+            for insert in range(len(Show_movie_title)):        
                 sql="insert into movie_to_be_screened(show_movie_title,show_movie_img,show_movie_open,show_movie_story) values(%s,%s,%s,%s);"
                 cursor.execute(sql,(Show_movie_title[insert],Show_movie_img_Processing[insert],Show_movie_open[insert],Show_movie_story[insert]))
                 conn.commit()
-        finally:
-            pass
-    else:
-        conn.close()
-        return redirect('/moviemain')
+    finally:
+        conn.close()   
+    return redirect('/moviemain')
     #리스트안에 영화제목이 들어가졌나 확인
     #print(Show_movie_title)
 
