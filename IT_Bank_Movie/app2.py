@@ -174,7 +174,7 @@ def detail(m_no,current_movie_title):
     nouns = noun_extractor.extract()
    
     # 이미지 파일위에 출력하기
-    img = Image.open('IT_Bank_Movie/static/wordcloud/apple.png')
+    img = Image.open('IT_Bank_Movie/static/img/cloud.png')
     img_array=np.array(img)
 
     wordcloud = WordCloud( font_path = '/Library/Fonts/NanumBarunGothic.ttf', 
