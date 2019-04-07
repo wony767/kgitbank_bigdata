@@ -30,7 +30,7 @@ for result3 in table:
         tmrvl.append(tmtitle+tmcode)
 conn=pymysql.connect(host='127.0.0.1',user='root',password='qwer1234',db='movie',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
 c=conn.cursor()
-#마리아 db에 넣을댸는 ??가아니고 %s로 써야ㅚㅁ
+#마리아 db에 넣을댸는 ??가아니고 %s로 써야됨
 sql="INSERT IGNORE INTO test(title,codem) VALUES(%s,%s)"
 c.executemany(sql, tmrvl)
 conn.commit()

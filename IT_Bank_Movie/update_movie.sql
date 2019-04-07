@@ -10,8 +10,9 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
-USE `movie`;
+DROP DATABASE movie;
+create database movie;
+USE movie;
 --  テーブル movie.current_movie の構造をダンプしています
 CREATE TABLE IF NOT EXISTS `current_movie` (
   `m_no` int(11) NOT NULL AUTO_INCREMENT,
